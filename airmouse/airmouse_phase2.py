@@ -34,6 +34,8 @@ roi_y1, roi_y2 = 100, frame_h - 100
 click_cooldown = 0  # Timestamp to prevent multiple clicks
 
 print("[INFO] AirMouse Phase 2 - Cursor & Click")
+click_start_time = None  # Timestamp for click duration
+click_registered = False  # Flag to check if click was registered
 
 while True:
     success, img = cap.read()
@@ -85,10 +87,17 @@ while True:
 
             # Register click only if fingers are very close
             if distance < 28:
-                if time.time() - click_cooldown > 0.5:
-                    pyautogui.click()
-                    click_cooldown = time.time()
+                if not click_registered:
+                    if click_start_time is None:
+                        click_start_time = time.time()
 
+                    elif time.time() - click_start_time > 0.2:
+                        pyautogui.click()
+                        click_registered = True
+
+            else:
+                click_start_time = None
+                click_registered = False
 
 
 

@@ -76,27 +76,20 @@ while True:
             # Draw pointer
             cv2.circle(img, (x8, y8), 10, (0, 255, 0), cv2.FILLED)
 
-            # Skip if index finger is occluded
-            if lm_list[8].z > -0.2:
-                continue
-
-            # Get z-values for depth (negative = closer to camera)
-            z4 = lm_list[4].z  # Thumb
-            z8 = lm_list[8].z  # Index
-
-            # Distance in 2D
+            # Calculate Euclidean distance between thumb and index fingertip
             distance = math.hypot(x4 - x8, y4 - y8)
 
-            # Check if fingers are close in 2D AND not too far apart in depth
-            if distance < 30 and abs(z4 - z8) < 0.03:
-                # Visual feedback
-                cv2.line(img, (x4, y4), (x8, y8), (0, 0, 255), 3)
-                cv2.circle(img, ((x4 + x8) // 2, (y4 + y8) // 2), 8, (0, 0, 255), cv2.FILLED)
+            # Show visual feedback
+            cv2.line(img, (x4, y4), (x8, y8), (0, 0, 255), 2)
+            cv2.circle(img, ((x4 + x8)//2, (y4 + y8)//2), 6, (0, 0, 255), cv2.FILLED)
 
-                # Cooldown check
+            # Register click only if fingers are very close
+            if distance < 28:
                 if time.time() - click_cooldown > 0.5:
                     pyautogui.click()
                     click_cooldown = time.time()
+
+
 
 
     # Show webcam feed

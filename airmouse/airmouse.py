@@ -48,7 +48,14 @@ drag_registered = False
 dragging = False
 
 
-print("[INFO] AirMouse Phase 4 - Now Toggleable with Gesture + Keybind (Ctrl + Shift + A)")
+print("[INFO] AirMouse Gesture Based Virtual Mouse Controller")
+print("[INFO] Make a 'Yo' sign to toggle AirMouse on/off")
+print("[INFO] Press 'Ctrl + Shift + A' to toggle AirMouse on/off")
+print("[INFO] Left Click: Pinch Thumb and Middle Finger")
+print("[INFO] Right Click: Pinch Thumb and Ring Finger")
+print("[INFO] Drag: Pinch Thumb and Index Finger")
+print("[INFO] AirMouse is Active")
+print("[INFO] Press 'q' to exit")
 
 while True:
   success, img = cap.read()
@@ -176,14 +183,14 @@ while True:
               dragging = True
               pyautogui.mouseDown()
               drag_registered = True
-              print("[DEBUG] Drag Start")
+              # print("[DEBUG] Drag Start")
         else:
           drag_start_time = None
           drag_registered = False
           if dragging:
             pyautogui.mouseUp()
             dragging = False
-            print("[DEBUG] Drag End")
+            # print("[DEBUG] Drag End")
 
 
   cv2.imshow("AirMouse - Gesture Based Virtual Mouse Controller", img)

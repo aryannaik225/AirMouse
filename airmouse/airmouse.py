@@ -186,7 +186,7 @@ while True:
             print("[DEBUG] Drag End")
 
 
-  cv2.imshow("AirMouse - Phase 4", img)
+  cv2.imshow("AirMouse - Gesture Based Virtual Mouse Controller", img)
 
   # Exit on 'q'
   if cv2.waitKey(1) & 0xFF == ord('q'):

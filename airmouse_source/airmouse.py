@@ -205,13 +205,15 @@ while True:
 
 
         # Drawing Toggle Gesture: Thumb + Pinky Up, Rest Down
-        thumb_up = is_finger_up(4)
-        pinky_up = is_finger_up(20)
-        index_down = not is_finger_up(8)
-        middle_down = not is_finger_up(12)
-        ring_down = not is_finger_up(16)
+        thumb_up_draw = is_finger_up(4)
+        pinky_up_draw = is_finger_up(20)
+        index_down_draw = not is_finger_up(8)
+        middle_down_draw = not is_finger_up(12)
+        ring_down_draw = not is_finger_up(16)
 
-        drawing_toggle_gesture = thumb_up and pinky_up and index_down and middle_down and ring_down
+        drawing_toggle_gesture = (
+            thumb_up_draw and pinky_up_draw and index_down_draw and middle_down_draw and ring_down_draw
+        )
 
         if drawing_toggle_gesture:
           if not drawing_mode_held:
@@ -234,7 +236,7 @@ while True:
           if dist_drawing < 28:
             pyautogui.mouseDown()
             cv2.circle(img, ((x4 + x8)//2, (y4 + y8)//2), 10, (255, 0, 0), cv2.FILLED)
-          elif dist_drawing > 60:
+          elif dist_drawing > 28:
             pyautogui.mouseUp()
 
         if drawing_mode:

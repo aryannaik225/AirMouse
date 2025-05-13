@@ -8,7 +8,7 @@ import keyboard
 
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(
-  max_num_hands=1,
+  max_num_hands=2,
   min_detection_confidence=0.7,
   min_tracking_confidence=0.7
 )
@@ -71,8 +71,14 @@ while True:
     print(f"[KEYBIND] AirMouse {'Activated' if airmouse_active else 'Deactivated'}")
     time.sleep(1)  # Prevents multiple toggles in a short time
 
-  if results.multi_hand_landmarks:
-    for hand_landmarks in results.multi_hand_landmarks:
+  if results.multi_hand_landmarks and results.multi_handedness:
+    for hand_index, hand_landmarks in enumerate(results.multi_hand_landmarks):
+
+      hand_label = results.multi_handedness[hand_index].classification[0].label
+
+      if hand_label != 'Right':
+        continue
+
       lm_list = hand_landmarks.landmark
 
       x4, y4 = int(lm_list[4].x * frame_w), int(lm_list[4].y * frame_h) # Thumb tip

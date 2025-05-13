@@ -5,6 +5,8 @@ import numpy as np
 import math
 import time
 import keyboard
+import subprocess
+import psutil
 
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(
@@ -53,6 +55,14 @@ dragging = False
 drawing_mode = False
 drawing_mode_held = False
 drawing_start_time = None
+
+osk_open = False
+
+def is_osk_running():
+  for proc in psutil.process_iter(['name']):
+    if proc.info['name'] == 'osk.exe':
+      return True
+  return False
 
 
 print("[INFO] AirMouse Gesture Based Virtual Mouse Controller")
@@ -257,6 +267,9 @@ while True:
       elif hand_label == 'Left':
         lm_list = hand_landmarks.landmark
 
+        x4_L = int(lm_list[4].x * frame_w)
+        y4_L = int(lm_list[4].y * frame_h)
+
         x8_L = int(lm_list[8].x * frame_w)
         y8_L = int(lm_list[8].y * frame_h)
 
@@ -280,8 +293,9 @@ while True:
         left_index_down = not is_left_finger_up(8)
         left_ring_down = not is_left_finger_up(16)
         left_pinky_down = not is_left_finger_up(20)
+        left_thumb_down = not is_left_finger_up(4)
 
-        scroll_gesture = left_middle_up and left_index_down and left_ring_down and left_pinky_down
+        scroll_gesture = left_middle_up and left_index_down and left_ring_down and left_pinky_down and left_thumb_down
 
         if scroll_gesture:
           cv2.circle(img, (x12_L, y12_L), 10, (255, 255, 0), cv2.FILLED)
@@ -299,8 +313,9 @@ while True:
         left_vol_middle_down = not is_left_finger_up(12)
         left_vol_ring_down = not is_left_finger_up(16)
         left_vol_pinky_down = not is_left_finger_up(20)
+        left_vol_thumb_down = not is_left_finger_up(4)
 
-        volume_gesture = left_vol_index_up and left_vol_middle_down and left_vol_ring_down and left_vol_pinky_down
+        volume_gesture = left_vol_index_up and left_vol_middle_down and left_vol_ring_down and left_vol_pinky_down and left_vol_thumb_down
 
         if volume_gesture:
           cv2.circle(img, (x8_L, y8_L), 10, (0, 255, 255), cv2.FILLED)
@@ -311,6 +326,32 @@ while True:
           elif y8_L > frame_h // 2:
             pyautogui.press('volumedown')
             cv2.putText(img, "Volume Down", (10, 120), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 255), 2)
+
+
+        # OSK Gesture: Pinky and Thumb Up, Rest Down
+        # osk_thumb_up = is_left_finger_up(4)
+        # osk_index_down = not is_left_finger_up(8)
+        # osk_middle_down = not is_left_finger_up(12)
+        # osk_ring_down = not is_left_finger_up(16)
+        # osk_pinky_up = is_left_finger_up(20)
+
+        # virtual_keyboard_gesture = osk_thumb_up and osk_index_down and osk_middle_down and osk_ring_down and osk_pinky_up
+
+        # if virtual_keyboard_gesture:
+        #   cv2.putText(img, "Toggle Virtual Keyboard", (10, 160), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 100, 255), 2)
+
+        #   if not osk_open:
+        #     if not is_osk_running():
+        #       subprocess.Popen(["C:\\Windows\\System32\\osk.exe"], shell=True)
+        #     osk_open = True
+        #   else:
+        #     for proc in psutil.process_iter(['name']):
+        #       if proc.info['name'] == 'osk.exe':
+        #         proc.terminate()
+        #     osk_open = False
+          
+        #   time.sleep(1.5)
+
 
 
   preview_img = cv2.resize(img, (640, 360))

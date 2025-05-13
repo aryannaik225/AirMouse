@@ -359,6 +359,7 @@ while True:
 
 
   preview_img = cv2.resize(img, (640, 360))
+  cv2.putText(preview_img, "Press 'q' to exit", (10, 340), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
   cv2.imshow("AirMouse - Gesture Based Virtual Mouse Controller", preview_img)
 
   # Exit on 'q'

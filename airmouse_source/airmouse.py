@@ -160,9 +160,9 @@ while True:
 
 
           # Left Click -> Thumb and middle finger pinch
-          dist_left_click = math.hypot(x4 - x16, y4 - y16) # Calculating the euclidean distance between thumb and middle finger
-          cv2.line(img, (x4, y4), (x16, y16), (0, 0, 255), 2)
-          cv2.circle(img, ((x4 + x16)//2, (y4 + y16)//2), 6, (0, 0, 255), cv2.FILLED)
+          dist_left_click = math.hypot(x4 - x12, y4 - y12) # Calculating the euclidean distance between thumb and middle finger
+          cv2.line(img, (x4, y4), (x12, y12), (0, 0, 255), 2)
+          cv2.circle(img, ((x4 + x12)//2, (y4 + y12)//2), 6, (0, 0, 255), cv2.FILLED)
 
           if dist_left_click < 28:
             if not left_click_registered:
@@ -178,7 +178,7 @@ while True:
 
 
           # Right Click -> Thumb and ring finger pinch
-          dist_right_click = math.hypot(x4 - x12, y4 - y12) # Calculating the euclidean distance between thumb and ring finger
+          dist_right_click = math.hypot(x4 - x16, y4 - y16) # Calculating the euclidean distance between thumb and ring finger
           
           if dist_right_click < 28:
             if not right_click_registered:

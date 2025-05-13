@@ -28,8 +28,8 @@ cap.set(10, 150)  # Brightness
 prev_x, prev_y = 0, 0
 smoothing = 2
 
-roi_x1, roi_x2 = 100, frame_w - 100
-roi_y1, roi_y2 = 100, frame_h - 100
+roi_x1, roi_x2 = 170, frame_w - 170
+roi_y1, roi_y2 = 170, frame_h - 170
 
 airmouse_active = True
 yo_start_time = None
@@ -274,7 +274,8 @@ while True:
 
         def is_left_finger_up(tip_id):
           return lm_list[tip_id].y < lm_list[tip_id - 2].y
-        
+
+        #  Scroll Gesture: Middle finger up, Rest down
         left_middle_up = is_left_finger_up(12)
         left_index_down = not is_left_finger_up(8)
         left_ring_down = not is_left_finger_up(16)
@@ -291,6 +292,25 @@ while True:
           elif y12_L > frame_h // 2:
             pyautogui.scroll(-100)
             cv2.putText(img, "Scrolling Down", (10, 80), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2)
+
+
+        # Volume Control Gesture: Index finger up, Rest down
+        left_vol_index_up = is_left_finger_up(8)
+        left_vol_middle_down = not is_left_finger_up(12)
+        left_vol_ring_down = not is_left_finger_up(16)
+        left_vol_pinky_down = not is_left_finger_up(20)
+
+        volume_gesture = left_vol_index_up and left_vol_middle_down and left_vol_ring_down and left_vol_pinky_down
+
+        if volume_gesture:
+          cv2.circle(img, (x8_L, y8_L), 10, (0, 255, 255), cv2.FILLED)
+
+          if y8_L < frame_h // 2:
+            pyautogui.press('volumeup')
+            cv2.putText(img, "Volume Up", (10, 120), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 255), 2)
+          elif y8_L > frame_h // 2:
+            pyautogui.press('volumedown')
+            cv2.putText(img, "Volume Down", (10, 120), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 255), 2)
 
 
   preview_img = cv2.resize(img, (640, 360))

@@ -7,6 +7,7 @@ import time
 import keyboard
 import subprocess
 import psutil
+from win10toast import ToastNotifier
 
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(
@@ -17,6 +18,8 @@ hands = mp_hands.Hands(
 mp_draw = mp.solutions.drawing_utils
 
 screen_w, screen_h = pyautogui.size()
+
+notifier = ToastNotifier()
 
 cap = cv2.VideoCapture(0)
 # frame_w, frame_h = 640, 480
@@ -86,6 +89,7 @@ while True:
   if keyboard.is_pressed('ctrl+shift+a'):
     airmouse_active = not airmouse_active
     print(f"[KEYBIND] AirMouse {'Activated' if airmouse_active else 'Deactivated'}")
+    notifier.show_toast("AirMouse", f"AirMouse {'Activated' if airmouse_active else 'Deactivated'}", duration=3, threaded=True)
     time.sleep(1)  # Prevents multiple toggles in a short time
 
   if results.multi_hand_landmarks and results.multi_handedness:
@@ -137,6 +141,7 @@ while True:
           elif time.time() - yo_start_time > 0.8:
             airmouse_active = not airmouse_active
             print(f"[GESTURE] AirMouse {'Activated' if airmouse_active else 'Deactivated'}")
+            notifier.show_toast("AirMouse", f"AirMouse {'Activated' if airmouse_active else 'Deactivated'}", duration=3, threaded=True)
             yo_held = False
             time.sleep(1)
         else:
@@ -245,6 +250,7 @@ while True:
               drawing_mode = not drawing_mode
               drawing_mode_held = False
               print(f"[GESTURE] Drawing Mode {'Activated' if drawing_mode else 'Deactivated'}")
+              notifier.show_toast("AirMouse", f"Drawing Mode {'Activated' if drawing_mode else 'Deactivated'}", duration=3, threaded=True)
               time.sleep(1)
           else:
             drawing_start_time = None

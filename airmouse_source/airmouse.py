@@ -187,7 +187,7 @@ while True:
         else:
           drag_start_time = None
           drag_registered = False
-          if dragging:
+          if dragging and dist_drag > 60:
             pyautogui.mouseUp()
             dragging = False
             # print("[DEBUG] Drag End")

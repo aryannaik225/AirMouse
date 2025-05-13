@@ -47,6 +47,10 @@ drag_start_time = None
 drag_registered = False
 dragging = False
 
+drawing_mode = False
+drawing_mode_held = False
+drawing_start_time = None
+
 
 print("[INFO] AirMouse Gesture Based Virtual Mouse Controller")
 print("[INFO] Make a 'Yo' sign to toggle AirMouse on/off")
@@ -197,6 +201,45 @@ while True:
             pyautogui.mouseUp()
             dragging = False
             # print("[DEBUG] Drag End")
+
+
+
+        # Drawing Toggle Gesture: Thumb + Pinky Up, Rest Down
+        thumb_up = is_finger_up(4)
+        pinky_up = is_finger_up(20)
+        index_down = not is_finger_up(8)
+        middle_down = not is_finger_up(12)
+        ring_down = not is_finger_up(16)
+
+        drawing_toggle_gesture = thumb_up and pinky_up and index_down and middle_down and ring_down
+
+        if drawing_toggle_gesture:
+          if not drawing_mode_held:
+            drawing_start_time = time.time()
+            drawing_mode_held = True
+          elif time.time() - drawing_start_time > 0.8:
+            drawing_mode = not drawing_mode
+            drawing_mode_held = False
+            print(f"[GESTURE] Drawing Mode {'Activated' if drawing_mode else 'Deactivated'}")
+            time.sleep(1)
+        else:
+          drawing_start_time = None
+          drawing_mode_held = False
+
+
+        # Drawing Mode
+        if drawing_mode:
+          dist_drawing = math.hypot(x4 - x8, y4 - y8)
+
+          if dist_drawing < 28:
+            pyautogui.mouseDown()
+            cv2.circle(img, ((x4 + x8)//2, (y4 + y8)//2), 10, (255, 0, 0), cv2.FILLED)
+          elif dist_drawing > 60:
+            pyautogui.mouseUp()
+
+        if drawing_mode:
+          cv2.putText(img, "Drawing Mode: ON", (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 3)
+
 
 
   cv2.imshow("AirMouse - Gesture Based Virtual Mouse Controller", img)

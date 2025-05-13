@@ -293,9 +293,8 @@ while True:
         left_index_down = not is_left_finger_up(8)
         left_ring_down = not is_left_finger_up(16)
         left_pinky_down = not is_left_finger_up(20)
-        left_thumb_down = not is_left_finger_up(4)
 
-        scroll_gesture = left_middle_up and left_index_down and left_ring_down and left_pinky_down and left_thumb_down
+        scroll_gesture = left_middle_up and left_index_down and left_ring_down and left_pinky_down
 
         if scroll_gesture:
           cv2.circle(img, (x12_L, y12_L), 10, (255, 255, 0), cv2.FILLED)
@@ -313,9 +312,8 @@ while True:
         left_vol_middle_down = not is_left_finger_up(12)
         left_vol_ring_down = not is_left_finger_up(16)
         left_vol_pinky_down = not is_left_finger_up(20)
-        left_vol_thumb_down = not is_left_finger_up(4)
 
-        volume_gesture = left_vol_index_up and left_vol_middle_down and left_vol_ring_down and left_vol_pinky_down and left_vol_thumb_down
+        volume_gesture = left_vol_index_up and left_vol_middle_down and left_vol_ring_down and left_vol_pinky_down
 
         if volume_gesture:
           cv2.circle(img, (x8_L, y8_L), 10, (0, 255, 255), cv2.FILLED)

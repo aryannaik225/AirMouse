@@ -17,13 +17,16 @@ mp_draw = mp.solutions.drawing_utils
 screen_w, screen_h = pyautogui.size()
 
 cap = cv2.VideoCapture(0)
-frame_w, frame_h = 640, 480
-cap.set(3, frame_w)
-cap.set(4, frame_h)
+# frame_w, frame_h = 640, 480
+# cap.set(3, frame_w)
+# cap.set(4, frame_h)
+cap.set(3, 1280)  # Width
+cap.set(4, 720)  # Height
+frame_w, frame_h = int(cap.get(3)), int(cap.get(4))
 cap.set(10, 150)  # Brightness
 
 prev_x, prev_y = 0, 0
-smoothing = 7
+smoothing = 2
 
 roi_x1, roi_x2 = 100, frame_w - 100
 roi_y1, roi_y2 = 100, frame_h - 100
@@ -139,9 +142,19 @@ while True:
 
         srceen_x = np.interp(x8_clamped, [roi_x1, roi_x2], [0, screen_w])
         screen_y = np.interp(y8_clamped, [roi_y1, roi_y2], [0, screen_h])
-        curr_x = prev_x + (srceen_x - prev_x) / smoothing
-        curr_y = prev_y + (screen_y - prev_y) / smoothing
-        pyautogui.moveTo(curr_x, curr_y)
+        cv2.rectangle(img, (roi_x1, roi_y1), (roi_x2, roi_y2), (255, 255, 0), 2)
+
+        sensitivity = 0.2  # Try 0.15 or 0.1 if it's still fast
+
+        delta_x = (srceen_x - prev_x) * sensitivity
+        delta_y = (screen_y - prev_y) * sensitivity
+
+        curr_x = prev_x + delta_x
+        curr_y = prev_y + delta_y
+
+        if abs(delta_x) > 1 or abs(delta_y) > 1:  # Avoid micro jitter
+            pyautogui.moveTo(curr_x, curr_y, duration=0)
+
         prev_x, prev_y = curr_x, curr_y
 
         cv2.circle(img, (x8, y8), 10, (0, 255, 0), cv2.FILLED)
@@ -243,8 +256,8 @@ while True:
           cv2.putText(img, "Drawing Mode: ON", (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 3)
 
 
-
-  cv2.imshow("AirMouse - Gesture Based Virtual Mouse Controller", img)
+  preview_img = cv2.resize(img, (640, 360))
+  cv2.imshow("AirMouse - Gesture Based Virtual Mouse Controller", preview_img)
 
   # Exit on 'q'
   if cv2.waitKey(1) & 0xFF == ord('q'):

@@ -20,8 +20,8 @@ No hardware, no controllers - just your **webcam** and **gestures**.
 ## ✨ Features
 
 - 🎯 **Cursor Control** – Move your cursor with your index finger  
-- 👆 **Left Click** – Thumb + Ring Finger gesture  
-- 🖕 **Right Click** – Thumb + Middle Finger gesture  
+- 👆 **Left Click** – Thumb + Middle Finger gesture  
+- 🖕 **Right Click** – Thumb + Ring Finger gesture  
 - 🤏 **Drag Mode** – Thumb + Index Finger (with improved logic)  
 - 🎨 **Drawing Mode** – Toggle with Thumb + Pinky; draw using Thumb + Index Finger  
 - 🖱️ **Scroll** – Left Hand Middle Finger gesture  
@@ -94,19 +94,19 @@ Or, if you're using the `.exe` version - just double-click to launch
 
 ---
 
-## 🧠 Behind the Gestures
+## 🧠 Behind the Gestures (Right Hand Version)
 
 | Action          | Gesture                                           | Hand Used |
 | --------------- | ------------------------------------------------- | --------- |
 | Move Cursor     | Index Finger Point                                | Right     |
-| Left Click      | Thumb + Ring Finger                               | Right     |
-| Right Click     | Thumb + Middle Finger                             | Right     |
+| Left Click      | Thumb + Middle Finger                             | Right     |
+| Right Click     | Thumb + Ring Finger                               | Right     |
 | Drag Mode       | Thumb + Index Finger (distance < 60px)            | Right     |
 | Drawing Toggle  | Thumb + Pinky Up (others down)                    | Right     |
 | Draw Action     | Pinch Thumb + Index Finger                        | Right     |
 | Scroll          | Middle Finger Up (others down)                    | Left      |
 | Volume Control  | Index Finger Up (others down)                     | Left      |
-| Toggle Tracking | "Yo" 🤟 Gesture (Thumb + Index + Pinky)           | Any       |
+| Toggle Tracking | "Yo" 🤟 Gesture (Thumb + Index + Pinky)           | Right     |
 
 ---
 

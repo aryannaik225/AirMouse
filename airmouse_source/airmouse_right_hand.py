@@ -5,7 +5,6 @@ import numpy as np
 import math
 import time
 import keyboard
-import subprocess
 import psutil
 from win10toast import ToastNotifier
 

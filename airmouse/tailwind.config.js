@@ -6,7 +6,11 @@ module.exports = {
   ],
   theme: {
     extend: {
-      
+      cursor:{
+        airmouse: "url('airmouse/public/cursors/default.png'), auto",
+        pointer: "url('/cursors/pointer.png'), pointer",
+        text: "url('airmouse/public/cursors/select.png'), text",
+      },
     },
   },
   plugins: [],

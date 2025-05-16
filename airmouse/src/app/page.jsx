@@ -1,10 +1,10 @@
-import NavBar from "@/components/NavBar";
+import HeroSection from "@/components/HeroSection";
 import React from "react";
 
 export default function Home() {
   return (
-    <div>
-      <NavBar />
+    <div className="cursor-airmouse">
+      <HeroSection />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import TitleLogo from '@/../public/airmouse_title.png'
+import { Button } from './ui/moving-border'
 
 const NavBar = () => {
   return (
@@ -23,9 +24,15 @@ const NavBar = () => {
           FAQs
           <span className='absolute left-0 bottom-0 h-0.5 w-full bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center'></span>
         </a>
-        <button className='inter-medium text-md px-3 py-2 bg-[#f1f1f1]/40 border-2 border-[#878787] rounded text-[#333333] hover:bg-[#f1f1f1] transition duration-300 ease-in-out backdrop-blur-2xl'>
+        {/* <button className='inter-medium text-md px-3 py-2 bg-[#f1f1f1]/40 border-2 border-[#878787] rounded text-[#333333] hover:bg-[#f1f1f1] transition duration-300 ease-in-out backdrop-blur-2xl'>
           Download
-        </button>
+        </button> */}
+        <Button
+          borderRadius='1rem'
+          className="bg-[#f1f1f1]/60 text-black border-[#878787] px-3 py-2 inter-medium text-base hover:bg-[#f1f1f1] transition duration-300 ease-in-out backdrop-blur-2xl"
+        >
+          Download
+        </Button>
       </div>
     </div>
   )

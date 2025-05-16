@@ -1,10 +1,9 @@
 'use client'
 
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import NavBar from './NavBar'
 import { motion } from 'framer-motion'
 import { Highlight } from './ui/hero-highlight'
-import Image from 'next/image'
 
 const HeroSection = () => {
 
@@ -48,8 +47,30 @@ const HeroSection = () => {
     })
   }
 
+  const videoRef = useRef(null);
+  const [loopCount, setLoopCount] = useState(0);
+  const [showPlayButton, setShowPlayButton] = useState(false);
+
+  const handleEnded = () => {
+    setLoopCount(prev => {
+      const newCount = prev + 1;
+      if (newCount >= 5) {
+        setShowPlayButton(true);
+        return 0; // Reset loop counter
+      }
+      videoRef.current.play(); // Replay manually
+      return newCount;
+    });
+  };
+
+  const handlePlay = () => {
+    setShowPlayButton(false);
+    setLoopCount(0);
+    videoRef.current.play();
+  };
+
   return (
-    <div className='relative flex w-screen h-screen overflow-x-hidden'>
+    <div className='cursor-default-custom relative flex w-screen h-screen overflow-x-hidden overflow-y-hidden'>
       <div
         className='absolute w-screen h-screen backdrop-blur-lg border border-white/20 shadow-lg'
         style={{
@@ -64,7 +85,7 @@ const HeroSection = () => {
       <div className='z-10 relative'>
         <NavBar />
 
-        <div className='mt-36 inter-extrabold text-[52px] flex w-full justify-center'>
+        <div className='mt-32 inter-extrabold text-[52px] flex w-full justify-center'>
           {splittedTitle.map((word, index) => (
             <motion.span
               key={index}
@@ -72,7 +93,7 @@ const HeroSection = () => {
               initial='initial'
               whileInView='animate'
               custom={index}
-              className='inline-block mr-3'
+              className='inline-block mr-3 cursor-select-custom'
             >
               {word}{'   '}
             </motion.span>
@@ -80,7 +101,7 @@ const HeroSection = () => {
         </div>
 
         <motion.div 
-          className='inter-medium text-lg mt-1.5 flex justify-center w-full'
+          className='inter-medium text-lg mt-1.5 flex justify-center w-full cursor-select-custom'
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.5, type: 'spring', stiffness: 100, damping: 20 }}
@@ -101,7 +122,7 @@ const HeroSection = () => {
               initial='initial'
               whileInView='animate'
               custom={index}
-              className='inline-block mr-1.5'
+              className='inline-block mr-1.5 cursor-select-custom'
             >
               {word}{'.'}
             </motion.span>
@@ -112,7 +133,7 @@ const HeroSection = () => {
           className='flex w-full justify-center mt-8 gap-5'
         >
           <motion.button
-            className='bg-gradient-to-r from-20% from-[#3868ed] to-90% to-[#3868ed] hover:from-[#4783f1] hover:to-[#620bcc] text-white inter-medium text-md px-5 py-3 rounded-full shadow-lg transition-all duration-300 cursor-pointer'
+            className='bg-gradient-to-r from-20% from-[#3868ed] to-90% to-[#3868ed] hover:from-[#4783f1] hover:to-[#620bcc] text-white inter-medium text-md px-5 py-3 rounded-full shadow-lg transition-all duration-300 cursor-pointer-custom'
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ delay: 2.1, duration: 0.3 }}
@@ -121,13 +142,35 @@ const HeroSection = () => {
           </motion.button>
 
           <motion.button 
-            className='bg-white hover:bg-[#f1f1f1] border-2 border-[#d9d9d9] text-black inter-medium text-md px-5 py-3 rounded-full shadow-lg transition-all duration-300 cursor-pointer'
+            className='bg-white hover:bg-[#f1f1f1] border-2 border-[#d9d9d9] text-black inter-medium text-md px-5 py-3 rounded-full shadow-lg transition-all duration-300 cursor-pointer-custom'
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ delay: 2.3, duration: 0.3 }}
           >
             Watch Demo Video
           </motion.button>
+        </div>
+
+        <div className='flex w-full justify-center mt-10 relative'>
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            playsInline
+            className='w-[50%] h-[50%] rounded-2xl shadow-lg z-10 opacity-90 border-8 border-white'
+            onEnded={handleEnded}
+          >
+            <source src='/HeroSectionVideo.mp4' type='video/mp4'/>
+          </video>
+
+          {showPlayButton && (
+            <button
+              onClick={handlePlay}
+              className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white hover:bg-[#dadada] bg-opacity-60 text-black px-[18px] py-3 rounded-full text-lg hover:bg-opacity-80 transition-all z-30 cursor-pointer-custom select-none'
+            >
+              ▶
+            </button>
+          )}
         </div>
 
       </div>

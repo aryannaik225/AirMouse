@@ -191,3 +191,15 @@ body {
     }
   }
 }
+
+.cursor-default-custom {
+  cursor: url('../../public/cursors/default_16.png') 16 16, auto;
+}
+
+.cursor-pointer-custom {
+  cursor: url('../../public/cursors/pointer_16.png') 16 16, pointer;
+}
+
+.cursor-select-custom {
+  cursor: url('../../public/cursors/select_16.png') 16 16, text;
+}

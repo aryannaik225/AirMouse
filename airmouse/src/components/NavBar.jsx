@@ -4,15 +4,28 @@ import TitleLogo from '@/../public/airmouse_title.png'
 
 const NavBar = () => {
   return (
-    <div className='flex w-full mt-5 justify-between items-center px-20'>
+    <div className='flex w-screen mt-7 justify-between items-center px-40'>
       <div className='items-center flex'>
         <Image
           src={TitleLogo}
           alt='AirMouse Logo'
-          width={150}
+          width={160}
           height={50}
           className='cursor-pointer'
         />
+      </div>
+      <div className='flex items-center gap-10 '>
+        <a href='#' className='group text-black transition duration-300 inter-medium text-md relative'>
+          Features
+          <span className='absolute left-0 bottom-0 h-0.5 w-full bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center'></span>
+        </a>
+        <a href="#" className='group text-black transition duration-300 inter-medium text-md relative'>
+          FAQs
+          <span className='absolute left-0 bottom-0 h-0.5 w-full bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center'></span>
+        </a>
+        <button className='inter-medium text-md px-3 py-2 bg-[#f1f1f1]/40 border-2 border-[#878787] rounded text-[#333333] hover:bg-[#f1f1f1] transition duration-300 ease-in-out backdrop-blur-2xl'>
+          Download
+        </button>
       </div>
     </div>
   )

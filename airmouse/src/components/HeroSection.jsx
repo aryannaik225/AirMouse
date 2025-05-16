@@ -1,10 +1,11 @@
 import React from 'react'
+import NavBar from './NavBar'
 
 const HeroSection = () => {
   return (
     <div className='relative flex w-screen h-screen overflow-x-hidden'>
       <div
-        className='absolute w-screen h-screen z-10 backdrop-blur-lg border border-white/20 shadow-lg'
+        className='absolute w-screen h-screen backdrop-blur-lg border border-white/20 shadow-lg'
         style={{
           backgroundColor: 'hsla(0,0%,100%,1)',
           backgroundImage: `
@@ -14,6 +15,9 @@ const HeroSection = () => {
           `
         }}
       />
+      <div className='z-10'>
+        <NavBar />
+      </div>
     </div>
   )
 }

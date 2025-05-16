@@ -3,7 +3,7 @@ import Image from 'next/image'
 import TitleLogo from '@/../public/airmouse_title.png'
 import { Button } from './ui/moving-border'
 
-const NavBar = () => {
+const NavBar = ({handleDownloadClick}) => {
   return (
     <div className='flex w-screen mt-7 justify-between items-center px-40'>
       <div className='items-center flex'>
@@ -30,6 +30,7 @@ const NavBar = () => {
         <Button
           borderRadius='1rem'
           className="bg-[#f1f1f1]/60 text-black border-[#878787] px-3 py-2 inter-medium text-base hover:bg-[#f1f1f1] transition duration-300 ease-in-out backdrop-blur-2xl cursor-pointer-custom"
+          onClick={handleDownloadClick}
         >
           Download
         </Button>

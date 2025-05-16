@@ -3,8 +3,8 @@
 import React from 'react'
 import NavBar from './NavBar'
 import { motion } from 'framer-motion'
-import { PointerHighlight } from './ui/pointer-highlight'
 import { Highlight } from './ui/hero-highlight'
+import Image from 'next/image'
 
 const HeroSection = () => {
 
@@ -61,7 +61,7 @@ const HeroSection = () => {
           `
         }}
       />
-      <div className='z-10'>
+      <div className='z-10 relative'>
         <NavBar />
 
         <div className='mt-36 inter-extrabold text-[52px] flex w-full justify-center'>
@@ -108,17 +108,27 @@ const HeroSection = () => {
           ))}
         </motion.div>
 
-        <motion.div>
-          <motion.button>
-            Watch Demo Video
-          </motion.button>
-
-          <motion.button>
+        <div 
+          className='flex w-full justify-center mt-8 gap-5'
+        >
+          <motion.button
+            className='bg-gradient-to-r from-20% from-[#3868ed] to-90% to-[#3868ed] hover:from-[#4783f1] hover:to-[#620bcc] text-white inter-medium text-md px-5 py-3 rounded-full shadow-lg transition-all duration-300 cursor-pointer'
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ delay: 2.1, duration: 0.3 }}
+          >
             Download Now
           </motion.button>
-        </motion.div>
 
-
+          <motion.button 
+            className='bg-white hover:bg-[#f1f1f1] border-2 border-[#d9d9d9] text-black inter-medium text-md px-5 py-3 rounded-full shadow-lg transition-all duration-300 cursor-pointer'
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ delay: 2.3, duration: 0.3 }}
+          >
+            Watch Demo Video
+          </motion.button>
+        </div>
 
       </div>
     </div>

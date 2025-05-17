@@ -113,6 +113,7 @@ const HeroSection = () => {
               variants={pullupVariant}
               initial='initial'
               whileInView='animate'
+              viewport={{ once: true }}
               custom={index}
               className='inline-block mr-3 cursor-select-custom'
             >
@@ -125,6 +126,7 @@ const HeroSection = () => {
           className='inter-medium text-lg mt-1.5 flex justify-center w-full cursor-select-custom'
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
           transition={{ delay: 1.5, type: 'spring', stiffness: 100, damping: 20 }}
         >
           <Highlight className="text-black inter-bold">AirMouse</Highlight> is a gesture-based virtual mouse powered by your webcam.
@@ -134,6 +136,7 @@ const HeroSection = () => {
           className='inter-medium text-lg mt-1.5 flex justify-center w-full'
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
           transition={{ delay: 1.8, type: 'spring', stiffness: 100, damping: 20 }}
         >
           {splittedSubtitle.map((word, index) => (
@@ -142,6 +145,7 @@ const HeroSection = () => {
               variants={pullupVariant2}
               initial='initial'
               whileInView='animate'
+              viewport={{ once: true }}
               custom={index}
               className='inline-block mr-1.5 cursor-select-custom'
             >
@@ -158,6 +162,7 @@ const HeroSection = () => {
             onClick={handleDownloadClick}
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
             transition={{ delay: 2.1, duration: 0.3 }}
           >
             Download Now
@@ -168,13 +173,20 @@ const HeroSection = () => {
             onClick={() => setShowDemo(true)}
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
             transition={{ delay: 2.3, duration: 0.3 }}
           >
             Watch Demo Video
           </motion.button>
         </div>
 
-        <div className='flex w-full justify-center mt-10 relative'>
+        <motion.div 
+          className='flex w-full justify-center mt-10 relative'
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 2.5, type: 'spring', stiffness: 100, damping: 20 }}
+        >
           <video
             ref={videoRef}
             autoPlay
@@ -194,7 +206,7 @@ const HeroSection = () => {
               ▶
             </button>
           )}
-        </div>
+        </motion.div>
 
       </div>
 

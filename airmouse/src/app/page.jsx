@@ -7,6 +7,7 @@ export default function Home() {
     <div className="cursor-airmouse overflow-x-hidden">
       <HeroSection />
       <WhatAndWhy />
+      
     </div>
   );
 }

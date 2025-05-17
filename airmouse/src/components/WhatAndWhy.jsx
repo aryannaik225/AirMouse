@@ -4,8 +4,8 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Highlight } from './ui/hero-highlight'
 import { FaHandPaper, FaChalkboardTeacher, FaMousePointer, FaBolt, FaGamepad, FaScroll } from 'react-icons/fa'
-import Marquee from 'react-marquee-slider'
 import Image from 'next/image'
+import Marquee from './ui/Marquee'
 
 const features = [
   {
@@ -42,15 +42,15 @@ const features = [
 
 const items = [
   { text: 'Presentation Control' },
-  { image: '/Star.svg' },
+  // { image: '/Star.svg' },
   { text: 'Creative Workflow' },
-  { image: '/Star.svg' },
+  // { image: '/Star.svg' },
   { text: 'Gaming Sessions' },
-  { image: '/Star.svg' },
+  // { image: '/Star.svg' },
   { text: 'Casual Browsing' },
-  { image: '/Star.svg' },
+  // { image: '/Star.svg' },
   { text: 'Media & Entertainment' },
-  { image: '/Star.svg' },
+  // { image: '/Star.svg' },
 ]
 
 const WhatAndWhy = () => {
@@ -69,47 +69,15 @@ const WhatAndWhy = () => {
   }
 
   return (
-    <div className="relative z-10 px-6 pb-28 w-screen bg-white/60 backdrop-blur-xl border-t border-white/20 shadow-xl overflow-x-hidden">
-      
-      {/* Marquee */}
-      <div className='mt-0 flex items-center w-full py-10 border-y border-white/20 bg-black pointer-events-none'>
-        <Marquee
-          className="w-full"
-          velocity={25}
-          scatterRandomly={false}
-          resetAfterTries={200}
-          items={items}
-          pauseOnHover={false}
-          direction='ltr'
-        >
-          {items.map((item, index) => (
-            <div
-              key={index}
-              className="mx-6 flex items-center justify-center text-center text-white text-lg font-bold"
-            >
-              {item.text && (
-                <span className='text-white text-xl md:text-2xl poppins-semibold whitespace-nowrap bg-black px-4 py-2 rounded-xl border border-black/20 shadow-md'>
-                  {item.text}
-                </span>
-              )}
+    <div className="relative z-10 pb-28 w-screen bg-white/60 backdrop-blur-xl border-t border-white/20 shadow-xl overflow-x-hidden">
 
-              {item.image && (
-                <Image
-                  src={item.image}
-                  alt="Star"
-                  width={50}
-                  height={50}
-                  className="mx-3 w-12 h-12 object-contain"
-                />
-              )}
-            </div>
-          ))}
-        </Marquee>
+      <div className='mt-0 w-full'>
+        <Marquee />
       </div>
 
       {/* What is AirMouse */}
       <motion.div
-        className="max-w-4xl mx-auto text-center mb-24"
+        className="max-w-4xl mx-auto text-center mb-24 mt-28"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -152,6 +120,7 @@ const WhatAndWhy = () => {
             whileInView="visible"
             viewport={{ once: true }}
             custom={index * 0.3}
+            whileHover={{ scale: 1.05, y: -5, transition: { duration: 0.3 } }}
           >
             <div className="mb-4 text-[#3868ed]">{feature.icon}</div>
             <h3 className="text-xl font-semibold mb-2 inter-semibold">{feature.title}</h3>

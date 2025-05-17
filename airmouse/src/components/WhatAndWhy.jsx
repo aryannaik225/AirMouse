@@ -77,7 +77,7 @@ const WhatAndWhy = () => {
 
       {/* What is AirMouse */}
       <motion.div
-        className="max-w-4xl mx-auto text-center mb-24 mt-28"
+        className="max-w-4xl mx-auto text-center mt-28"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -89,7 +89,6 @@ const WhatAndWhy = () => {
         </h2>
         <p className="text-lg text-gray-700 inter-medium">
           A gesture-powered virtual mouse that uses just your webcam to control your computer.
-          No hardware. No sensors. Just the magic of your hands.
         </p>
       </motion.div>
 
@@ -102,9 +101,6 @@ const WhatAndWhy = () => {
         variants={containerVariants}
         custom={2}
       >
-        <h2 className="text-4xl font-extrabold mb-4 inter-extrabold">
-          Why You’ll Love <Highlight className="text-black">AirMouse</Highlight>
-        </h2>
         <p className="text-lg text-gray-700 inter-medium mb-12">
           Designed for developers, designers, gamers, presenters — or just casual users.
         </p>

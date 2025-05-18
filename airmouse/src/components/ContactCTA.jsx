@@ -6,20 +6,35 @@ import { FaCheck } from 'react-icons/fa'
 
 const ContactCTA = () => {
   const [form, setForm] = useState({ name: '', email: '', msg: '' })
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
   const [submitted, setSubmitted] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
+    setError(null)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
 
-    window.location.href = `mailto:aryann2203@gmail.com?subject=AirMouse%20Feedback&body=${encodeURIComponent(
-      form.msg + '\n\n— ' + form.name + ' (' + form.email + ')'
-    )}`
+      if (res.ok) {
+        setSubmitted(true)
+        setLoading(false)
+        setError(null)
+        setForm({ name: '', email: '', msg: '' })
 
-    setSubmitted(true)
-
-    setTimeout(() => {
-      setSubmitted(false)
-    }, 6000) // 6 seconds reset
+        setTimeout(() => setSubmitted(false), 5000) // Reset after 5s
+      } else {
+        alert('Failed to send. Try again later.')
+      }
+    } catch (err) {
+      console.error(err)
+      alert('Something went wrong!')
+    }
   }
 
   return (

@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { Highlight } from './ui/hero-highlight'
 import Image from 'next/image'
 import Logo from '../../public/airmouse_final_logo.png'
+import { useIsMobile } from './ui/useIsMobile'
 
 const HeroSection = () => {
   const videoRef = useRef(null);
@@ -14,6 +15,8 @@ const HeroSection = () => {
   const [showModal, setShowModal] = useState(false);
   const [showDemo, setShowDemo] = useState(false);
 
+  const isMobile = useIsMobile()
+
   const handleDownloadClick = () => {
     setShowModal(true)
   }
@@ -21,8 +24,8 @@ const HeroSection = () => {
   const downloadApp = (handedness) => {
     const url =
       handedness === 'right'
-        ? 'https://www.dropbox.com/scl/fi/tgwfjwguykxmogoxsjx16/AirMouse-Right-Hand.zip?rlkey=hidx5xabudwqfv8tdm6rb0wys&st=e8r1ug1g&dl=0'
-        : 'https://www.dropbox.com/scl/fi/qmhs61ymgsg0307voo7rc/AirMouse-Left-Hand.zip?rlkey=dgux7j0xsrpxevoutu8ra1hge&st=pevned3k&dl=0'
+        ? 'https://www.dropbox.com/scl/fi/xp0h4b7hi3e4sb9waqpwu/AirMouse-Right-Hand.zip?rlkey=40rczhy9gi06j6v0i65cyqfwb&st=u1enjbqn&dl=0'
+        : 'https://www.dropbox.com/scl/fi/qmhs61ymgsg0307voo7rc/AirMouse-Left-Hand.zip?rlkey=dgux7j0xsrpxevoutu8ra1hge&st=xvh6poji&dl=0'
 
     window.location.href = url
     setShowModal(false)
@@ -68,15 +71,14 @@ const HeroSection = () => {
     })
   }
 
-
   const handleEnded = () => {
     setLoopCount(prev => {
       const newCount = prev + 1;
       if (newCount >= 5) {
         setShowPlayButton(true);
-        return 0; // Reset loop counter
+        return 0;
       }
-      videoRef.current.play(); // Replay manually
+      videoRef.current.play();
       return newCount;
     });
   };
@@ -87,13 +89,10 @@ const HeroSection = () => {
     videoRef.current.play();
   };
 
-
-
-
   return (
-    <div className='cursor-default-custom relative flex w-screen h-screen overflow-x-hidden overflow-y-hidden'>
+    <div className='cursor-default-custom relative flex w-screen min-h-screen overflow-x-hidden overflow-y-hidden'>
       <div
-        className='absolute w-screen h-screen backdrop-blur-lg border border-white/20 shadow-lg'
+        className='absolute w-full h-full backdrop-blur-lg border border-white/20 shadow-lg'
         style={{
           backgroundColor: 'hsla(0,0%,100%,1)',
           backgroundImage: `
@@ -104,9 +103,9 @@ const HeroSection = () => {
         }}
       />
       <div className='z-10 relative'>
-        <NavBar handleDownloadClick={handleDownloadClick}/>
+        <NavBar handleDownloadClick={handleDownloadClick} />
 
-        <div className='mt-32 inter-extrabold text-[52px] flex w-full justify-center'>
+        <div className='mt-32 inter-extrabold text-[52px] flex justify-center flex-wrap'>
           {splittedTitle.map((word, index) => (
             <motion.span
               key={index}
@@ -117,23 +116,28 @@ const HeroSection = () => {
               custom={index}
               className='inline-block mr-3 cursor-select-custom'
             >
-              {word}{'   '}
+              {word}
             </motion.span>
           ))}
         </div>
 
         <motion.div
-          className='inter-medium text-lg mt-1.5 flex justify-center w-full cursor-select-custom'
+          className='inter-medium text-lg mt-1.5 flex justify-center w-full cursor-select-custom text-center px-4'
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 1.5, type: 'spring', stiffness: 100, damping: 20 }}
         >
-          <Highlight className="text-black inter-bold">AirMouse</Highlight> is a gesture-based virtual mouse powered by your webcam.
+          {isMobile ? (
+            <>AirMouse</>
+          ) : (
+            <Highlight className="text-black inter-bold">AirMouse</Highlight>
+          )}
+          &nbsp;is a gesture-based virtual mouse powered by your webcam.
         </motion.div>
 
         <motion.div
-          className='inter-medium text-lg mt-1.5 flex justify-center w-full'
+          className='inter-medium text-lg mt-1.5 flex justify-center w-full flex-wrap'
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
@@ -149,16 +153,14 @@ const HeroSection = () => {
               custom={index}
               className='inline-block mr-1.5 cursor-select-custom'
             >
-              {word}{'.'}
+              {word}.
             </motion.span>
           ))}
         </motion.div>
 
-        <div
-          className='flex w-full justify-center mt-8 gap-5'
-        >
+        <div className='flex justify-center mt-8 gap-5 flex-wrap'>
           <motion.button
-            className='bg-gradient-to-r from-20% from-[#3868ed] to-90% to-[#3868ed] hover:from-[#4783f1] hover:to-[#620bcc] text-white inter-medium text-md px-5 py-3 rounded-full shadow-lg transition-all duration-300 cursor-pointer-custom'
+            className='bg-gradient-to-r from-[#3868ed] to-[#3868ed] hover:from-[#4783f1] hover:to-[#620bcc] text-white inter-medium text-md px-5 py-3 rounded-full shadow-lg transition-all duration-300 cursor-pointer-custom'
             onClick={handleDownloadClick}
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
@@ -180,8 +182,8 @@ const HeroSection = () => {
           </motion.button>
         </div>
 
-        <motion.div 
-          className='flex w-full justify-center mt-10 relative'
+        <motion.div
+          className='flex justify-center mt-10 relative px-4 pb-10'
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
@@ -193,10 +195,10 @@ const HeroSection = () => {
             muted
             playsInline
             onContextMenu={(e) => e.preventDefault()}
-            className='w-[50%] h-[50%] rounded-2xl shadow-lg z-10 opacity-90 border-8 border-white select-none'
+            className='w-full max-w-4xl rounded-2xl shadow-lg z-10 opacity-90 border-8 border-white select-none'
             onEnded={handleEnded}
           >
-            <source src='/HeroSectionVideo.mp4' type='video/mp4' />
+            <source src='/HeroSectionVideo2.mp4' type='video/mp4' />
           </video>
 
           {showPlayButton && (
@@ -208,13 +210,12 @@ const HeroSection = () => {
             </button>
           )}
         </motion.div>
-
       </div>
 
       {showModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50" onClick={(e) => e.target === e.currentTarget && setShowModal(false)}>
           <div className="bg-white p-6 rounded-lg text-center w-96">
-            <Image src={Logo} alt="" width={150} height={150} className="mx-auto mb-4 select-none" draggable="False"/>
+            <Image src={Logo} alt="AirMouse Logo" width={150} height={150} className="mx-auto mb-4 select-none" draggable="false" />
             <h2 className='text-base inter-bold mb-1 cursor-select-custom'>Are you right or left handed?</h2>
             <span className='text-base inter-regular mb-4 cursor-select-custom'>Answer to allow us in providing you the correct version.</span>
             <div className="flex justify-between gap-4 mt-12">
@@ -235,23 +236,26 @@ const HeroSection = () => {
         </div>
       )}
 
-      {/* Popup Modal */}
       {showDemo && (
-        <div className='fixed inset-0 z-50 bg-black/70 backdrop-blur-[2px] flex items-center justify-center' onClick={(e) => e.target === e.currentTarget && setShowDemo(false)}>
-          <div className='bg-white rounded-2xl overflow-hidden shadow-2xl relative w-full max-w-3xl'>
-            <iframe
-              className='w-full h-[315px] sm:h-[420px]'
-              src="https://www.youtube.com/embed/KQqHYK_NVYY?autoplay=1&rel=0"
-              title="AirMouse Demo"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy='strict-origin-when-cross-origin'
-              frameBorder="0"
-              allowFullScreen
-            ></iframe>
+        <div
+          className='fixed inset-0 z-50 bg-black/70 backdrop-blur-[2px] flex items-center justify-center px-4'
+          onClick={(e) => e.target === e.currentTarget && setShowDemo(false)}
+        >
+          <div className='bg-white rounded-2xl overflow-hidden shadow-2xl w-full max-w-3xl max-h-[90vh]'>
+            <div className='relative w-full' style={{ paddingTop: '56.25%' /* 16:9 Aspect Ratio */ }}>
+              <iframe
+                className='absolute top-0 left-0 w-full h-full'
+                src="https://www.youtube.com/embed/KQqHYK_NVYY?autoplay=1&rel=0"
+                title="AirMouse Demo"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy='strict-origin-when-cross-origin'
+                frameBorder="0"
+                allowFullScreen
+              />
+            </div>
           </div>
         </div>
       )}
-
     </div>
   )
 }

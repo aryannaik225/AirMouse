@@ -128,7 +128,7 @@ const DownloadAndRequirements = () => {
 
                 {/* Button */}
                 <motion.a
-                  href="https://www.dropbox.com/scl/fi/tgwfjwguykxmogoxsjx16/AirMouse-Right-Hand.zip?rlkey=hidx5xabudwqfv8tdm6rb0wys&st=e8r1ug1g&dl=0"
+                  href="https://www.dropbox.com/scl/fi/xp0h4b7hi3e4sb9waqpwu/AirMouse-Right-Hand.zip?rlkey=40rczhy9gi06j6v0i65cyqfwb&st=u1enjbqn&dl=0"
                   whileHover={{ scale: 1.02 }}
                   className="relative z-10 w-full px-5 py-4 rounded-xl bg-gradient-to-r from-[#5ddcff] to-[#3c67e3] text-white inter-medium shadow-md flex items-center justify-center gap-2 text-nowrap cursor-pointer-custom"
                 >
@@ -179,7 +179,7 @@ const DownloadAndRequirements = () => {
 
                 {/* Button */}
                 <motion.a
-                  href="https://www.dropbox.com/scl/fi/qmhs61ymgsg0307voo7rc/AirMouse-Left-Hand.zip?rlkey=dgux7j0xsrpxevoutu8ra1hge&st=pevned3k&dl=0"
+                  href="https://www.dropbox.com/scl/fi/qmhs61ymgsg0307voo7rc/AirMouse-Left-Hand.zip?rlkey=dgux7j0xsrpxevoutu8ra1hge&st=xvh6poji&dl=0"
                   whileHover={{ scale: 1.02 }}
                   className="relative z-10 w-full px-5 py-4 rounded-xl bg-gradient-to-r from-[#ff8a05] to-[#ff3c83] text-white inter-medium shadow-md flex items-center justify-center gap-2 text-nowrap cursor-pointer-custom"
                 >

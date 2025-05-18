@@ -5,7 +5,7 @@ import { Button } from './ui/moving-border'
 
 const NavBar = ({handleDownloadClick}) => {
   return (
-    <div className='flex w-screen overflow-x-hidden mt-7 justify-between items-center px-40'>
+    <div className='flex w-screen overflow-x-hidden mt-7 justify-between items-center lg:px-40 md:px-28 sm:px-10 px-5'>
       <a className='items-center flex' href='#'>
         <Image
           src={TitleLogo}
@@ -17,11 +17,11 @@ const NavBar = ({handleDownloadClick}) => {
         />
       </a>
       <div className='flex items-center gap-10 '>
-        <a href='#features' className='cursor-pointer-custom group text-black transition duration-300 inter-medium text-md relative'>
+        <a href='#features' className='hidden md:block cursor-pointer-custom group text-black transition duration-300 inter-medium text-md relative'>
           Features
           <span className='absolute left-0 bottom-0 h-0.5 w-full bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center'></span>
         </a>
-        <a href="#faq" className='cursor-pointer-custom group text-black transition duration-300 inter-medium text-md relative'>
+        <a href="#faq" className='hidden md:block cursor-pointer-custom group text-black transition duration-300 inter-medium text-md relative'>
           FAQs
           <span className='absolute left-0 bottom-0 h-0.5 w-full bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center'></span>
         </a>

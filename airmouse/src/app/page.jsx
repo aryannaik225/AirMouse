@@ -1,4 +1,5 @@
 import ContactCTA from "@/components/ContactCTA";
+import DownloadAndRequirements from "@/components/DownloadAndRequirements";
 import Downloads from "@/components/Downloads";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
@@ -14,8 +15,9 @@ export default function Home() {
       <HeroSection />
       <WhatAndWhy />
       <HowItWorks />
-      <Downloads />
-      <SystemRequirements />
+      <DownloadAndRequirements />
+      {/* <Downloads />
+      <SystemRequirements /> */}
       <FAQ />
       <ContactCTA />
       <Footer />

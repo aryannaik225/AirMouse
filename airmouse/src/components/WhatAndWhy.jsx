@@ -101,7 +101,7 @@ const WhatAndWhy = () => {
         variants={containerVariants}
         custom={2}
       >
-        <p className="text-lg text-gray-700 inter-medium mb-12">
+        <p className="text-lg text-pink-400 inter-medium mb-12">
           Designed for developers, designers, gamers, presenters — or just casual users.
         </p>
       </motion.div>
@@ -110,7 +110,7 @@ const WhatAndWhy = () => {
         {features.map((feature, index) => (
           <motion.div
             key={index}
-            className="p-6 bg-white/70 backdrop-blur-md rounded-2xl shadow-lg border border-white/30 hover:shadow-xl transition-all duration-300"
+            className="relative p-6 bg-white/70 backdrop-blur-md rounded-2xl shadow-lg border border-white/30 hover:shadow-xl transition-all duration-300"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -118,6 +118,7 @@ const WhatAndWhy = () => {
             custom={index * 0.3}
             whileHover={{ scale: 1.05, y: -5, transition: { duration: 0.3 } }}
           >
+            <div className='absolute w-2 h-12 bg-[#3868ed] rounded-l-xl top-2 -left-2'/>
             <div className="mb-4 text-[#3868ed]">{feature.icon}</div>
             <h3 className="text-xl font-semibold mb-2 inter-semibold">{feature.title}</h3>
             <p className="text-sm text-gray-700 inter-medium">{feature.description}</p>

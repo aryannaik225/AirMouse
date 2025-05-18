@@ -9,7 +9,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className="cursor-default-custom relative mt-24 px-6 sm:px-16 py-5 bg-white border-t border-neutral-200 overflow-hidden">
+    <footer className="cursor-default-custom w-screen overflow-x-hidden relative mt-24 px-6 sm:px-16 py-5 bg-white border-t border-neutral-200 overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

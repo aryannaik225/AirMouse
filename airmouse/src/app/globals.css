@@ -206,3 +206,11 @@ body {
 .cursor-select-custom {
   cursor: url('../../public/cursors/select_16.png') 5 5, text;
 }
+
+/* * {
+  outline: 1px solid red;
+} */
+
+html, body {
+  overflow-x: hidden;
+}

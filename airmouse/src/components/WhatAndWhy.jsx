@@ -69,16 +69,16 @@ const WhatAndWhy = () => {
   }
 
   return (
-    <div className="cursor-default-custom relative z-10 pb-28 w-screen bg-white/60 backdrop-blur-xl border-t border-white/20 shadow-xl overflow-x-hidden">
+    <div className="cursor-default-custom relative z-10 pb-28 w-full max-w-full overflow-hidden bg-white/60 backdrop-blur-xl border-t border-white/20 shadow-xl flex flex-col items-center">
 
-      <div className='mt-0 w-full select-none'>
+      <div className='mt-0 w-screen overflow-x-hidden select-none'>
         <Marquee />
       </div>
 
       {/* What is AirMouse */}
       <motion.div
         id='features'
-        className="max-w-4xl mx-auto text-center mt-28"
+        className="max-w-4xl text-center mt-28"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -95,19 +95,19 @@ const WhatAndWhy = () => {
 
       {/* Why AirMouse - Feature Cards */}
       <motion.div
-        className="max-w-6xl mx-auto text-center mb-12"
+        className="max-w-6xl text-center mb-12"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={containerVariants}
         custom={2}
       >
-        <p className="text-lg text-pink-400 inter-medium mb-12 cursor-select-custom">
+        <p className="text-lg text-slate-700 inter-medium mb-12 cursor-select-custom">
           Designed for developers, designers, gamers, presenters — or just casual users.
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl px-4">
         {features.map((feature, index) => (
           <motion.div
             key={index}

@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 const Marquee = () => {
 
   return (
-    <div className='w-screen overflow-hidden bg-black'>
+    <div className='w-screen overflow-x-hidden bg-black'>
       <div className='flex'>
         <motion.div
           initial={{ x: 0 }}

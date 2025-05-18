@@ -5,7 +5,7 @@ import { Button } from './ui/moving-border'
 
 const NavBar = ({handleDownloadClick}) => {
   return (
-    <div className='flex w-screen mt-7 justify-between items-center px-40'>
+    <div className='flex w-screen overflow-x-hidden mt-7 justify-between items-center px-40'>
       <a className='items-center flex' href='#'>
         <Image
           src={TitleLogo}

@@ -36,7 +36,7 @@ const DownloadAndRequirements = () => {
   ]
 
   return (
-    <section className="relative py-32 px-6 sm:px-16 overflow-hidden cursor-default-custom">
+    <section className="relative py-32 px-6 sm:px-16 w-screen overflow-x-hidden overflow-hidden cursor-default-custom">
       {/* Patterned Grid Background + Glow */}
       <div
         className={cn(

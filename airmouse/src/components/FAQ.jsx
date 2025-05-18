@@ -43,7 +43,7 @@ const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null)
 
   return (
-    <section id='faq' className="relative w-screen pt-6 pb-16 px-6 sm:px-16 bg-white cursor-default-custom">
+    <section id='faq' className="relative w-screen overflow-x-hidden pt-6 pb-16 px-6 sm:px-16 bg-white cursor-default-custom">
       <div
         className={cn(
           "absolute inset-0 z-0",

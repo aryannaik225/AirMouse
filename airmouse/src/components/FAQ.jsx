@@ -43,7 +43,7 @@ const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null)
 
   return (
-    <section className="relative w-screen pt-6 pb-16 px-6 sm:px-16 bg-white">
+    <section id='faq' className="relative w-screen pt-6 pb-16 px-6 sm:px-16 bg-white cursor-default-custom">
       <div
         className={cn(
           "absolute inset-0 z-0",
@@ -60,20 +60,20 @@ const FAQ = () => {
 
       <div className="relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-8">
-          <h3 className="text-3xl inter-bold mb-2">Frequently Asked Questions</h3>
+          <h3 className="text-3xl inter-bold mb-2 cursor-select-custom">Frequently Asked Questions</h3>
         </div>
         <div className="max-w-3xl mx-auto space-y-4">
           {faqs.map((f, i) => (
             <div
               key={i}
-              className="border border-black/10 rounded-lg overflow-hidden"
+              className="border border-black/10 rounded-lg overflow-hidden cursor-default-custom"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full text-left px-4 py-3 inter-medium flex justify-between items-center bg-white/60 backdrop-blur-xl"
+                className="cursor-default-custom w-full text-left px-4 py-3 inter-medium flex justify-between items-center bg-white/60 backdrop-blur-xl"
               >
-                <span>{f.q}</span>
-                <span className="text-2xl">{openIndex === i ? '−' : '+'}</span>
+                <span className='cursor-select-custom'>{f.q}</span>
+                <span className="text-2xl select-none cursor-pointer-custom" draggable={false}>{openIndex === i ? '−' : '+'}</span>
               </button>
 
               {/* Animated Answer */}
@@ -87,7 +87,7 @@ const FAQ = () => {
                     className="overflow-hidden"
                   >
                     <div className="px-4 py-3 bg-white">
-                      <p className="text-black/70">{f.a}</p>
+                      <p className="text-black/70 cursor-select-custom">{f.a}</p>
                     </div>
                   </motion.div>
                 )}

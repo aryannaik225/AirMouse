@@ -9,7 +9,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <footer className="relative mt-24 px-6 sm:px-16 py-5 bg-white border-t border-neutral-200 overflow-hidden">
+    <footer className="cursor-default-custom relative mt-24 px-6 sm:px-16 py-5 bg-white border-t border-neutral-200 overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -18,8 +18,8 @@ const Footer = () => {
         className="relative z-10 max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6"
       >
         {/* Logo and Text */}
-        <a href='#' className="flex items-center gap-3">
-          <Image src="/airmouse_title.png" alt="AirMouse Logo" width={160} height={40} />
+        <a href='#' className="flex items-center gap-3 cursor-pointer-custom">
+          <Image src="/airmouse_title.png" alt="AirMouse Logo" width={160} height={40} draggable={false} className='select-none' />
         </a>
 
         <motion.div
@@ -40,7 +40,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-neutral-700 hover:text-black transition"
           >
-            <FaGithub className="text-xl" />
+            <FaGithub className="text-xl cursor-pointer-custom" />
           </Link>
           <Link
             href="https://www.linkedin.com/in/aryannaik225/"
@@ -48,13 +48,10 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-neutral-700 hover:text-black transition"
           >
-            <SiLinkedin className="text-xl" />
+            <SiLinkedin className="text-xl cursor-pointer-custom" />
           </Link>
         </div>
-      </motion.div>
-
-      {/* Bottom Text */}
-      
+      </motion.div>  
     </footer>
   )
 }

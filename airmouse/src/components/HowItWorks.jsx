@@ -47,7 +47,7 @@ const itemVariant = {
 
 const HowItWorks = () => {
   return (
-    <section className="relative py-24 px-6 sm:px-20 overflow-hidden">
+    <section className="relative py-24 px-6 sm:px-20 overflow-hidden cursor-default-custom">
       
       {/* Custom background pattern (as provided) */}
       <div className="absolute inset-0 z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]">
@@ -59,7 +59,7 @@ const HowItWorks = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, type: 'spring' }}
-          className="text-black text-4xl sm:text-5xl inter-bold mb-14"
+          className="text-black text-4xl sm:text-5xl inter-bold mb-14 cursor-select-custom"
         >
           How It Works
         </motion.h2>

@@ -19,6 +19,12 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
   background: #ffffff;
   color: #000000;
@@ -190,13 +196,13 @@ body {
 }
 
 .cursor-default-custom {
-  cursor: url('../../public/cursors/default_16.png') 16 16, auto;
+  cursor: url('../../public/cursors/default_16.png') 5 5, auto;
 }
 
 .cursor-pointer-custom {
-  cursor: url('../../public/cursors/pointer_16.png') 16 16, pointer;
+  cursor: url('../../public/cursors/pointer_16.png') 8 8, pointer;
 }
 
 .cursor-select-custom {
-  cursor: url('../../public/cursors/select_16.png') 16 16, text;
+  cursor: url('../../public/cursors/select_16.png') 5 5, text;
 }

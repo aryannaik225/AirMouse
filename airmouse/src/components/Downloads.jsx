@@ -50,14 +50,14 @@ const DownloadAndRequirements = () => {
           <h3 className="text-2xl inter-bold mb-6 text-left">Download Options</h3>
           <div className="flex flex-col space-y-4">
             <a
-              href="/downloads/AirMouse-right.exe"
+              href="https://www.dropbox.com/scl/fi/tgwfjwguykxmogoxsjx16/AirMouse-Right-Hand.zip?rlkey=hidx5xabudwqfv8tdm6rb0wys&st=e8r1ug1g&dl=0"
               className="flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-[#3868ed] to-[#620bcc] text-white rounded-full shadow-lg hover:scale-105 transform transition"
             >
               <FaDownload />
               Right-Handed Setup
             </a>
             <a
-              href="/downloads/AirMouse-left.exe"
+              href="https://www.dropbox.com/scl/fi/qmhs61ymgsg0307voo7rc/AirMouse-Left-Hand.zip?rlkey=dgux7j0xsrpxevoutu8ra1hge&st=pevned3k&dl=0"
               className="flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-[#ed3868] to-[#cc0b62] text-white rounded-full shadow-lg hover:scale-105 transform transition"
             >
               <FaDownload />

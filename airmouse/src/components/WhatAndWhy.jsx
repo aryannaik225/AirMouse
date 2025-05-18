@@ -69,14 +69,15 @@ const WhatAndWhy = () => {
   }
 
   return (
-    <div className="relative z-10 pb-28 w-screen bg-white/60 backdrop-blur-xl border-t border-white/20 shadow-xl overflow-x-hidden">
+    <div className="cursor-default-custom relative z-10 pb-28 w-screen bg-white/60 backdrop-blur-xl border-t border-white/20 shadow-xl overflow-x-hidden">
 
-      <div className='mt-0 w-full'>
+      <div className='mt-0 w-full select-none'>
         <Marquee />
       </div>
 
       {/* What is AirMouse */}
       <motion.div
+        id='features'
         className="max-w-4xl mx-auto text-center mt-28"
         initial="hidden"
         whileInView="visible"
@@ -84,10 +85,10 @@ const WhatAndWhy = () => {
         variants={containerVariants}
         custom={1}
       >
-        <h2 className="text-4xl font-extrabold mb-4 inter-extrabold">
+        <h2 className="text-4xl font-extrabold mb-4 inter-extrabold cursor-select-custom">
           Meet <Highlight className="text-black">AirMouse</Highlight>
         </h2>
-        <p className="text-lg text-gray-700 inter-medium">
+        <p className="text-lg text-gray-700 inter-medium cursor-select-custom">
           A gesture-powered virtual mouse that uses just your webcam to control your computer.
         </p>
       </motion.div>
@@ -101,7 +102,7 @@ const WhatAndWhy = () => {
         variants={containerVariants}
         custom={2}
       >
-        <p className="text-lg text-pink-400 inter-medium mb-12">
+        <p className="text-lg text-pink-400 inter-medium mb-12 cursor-select-custom">
           Designed for developers, designers, gamers, presenters — or just casual users.
         </p>
       </motion.div>
@@ -110,18 +111,17 @@ const WhatAndWhy = () => {
         {features.map((feature, index) => (
           <motion.div
             key={index}
-            className="relative p-6 bg-white/70 backdrop-blur-md rounded-2xl shadow-lg border border-white/30 hover:shadow-xl transition-all duration-300"
+            className="hover:scale-105 relative p-6 bg-white/70 backdrop-blur-md rounded-2xl shadow-lg border border-white/30 hover:shadow-xl transition-all duration-300"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             custom={index * 0.3}
-            whileHover={{ scale: 1.05, y: -5, transition: { duration: 0.3 } }}
           >
             <div className='absolute w-2 h-12 bg-[#3868ed] rounded-l-xl top-2 -left-2'/>
-            <div className="mb-4 text-[#3868ed]">{feature.icon}</div>
-            <h3 className="text-xl font-semibold mb-2 inter-semibold">{feature.title}</h3>
-            <p className="text-sm text-gray-700 inter-medium">{feature.description}</p>
+            <div className="mb-4 text-[#3868ed] select-none" draggable={false}>{feature.icon}</div>
+            <h3 className="text-xl font-semibold mb-2 inter-semibold cursor-default-custom">{feature.title}</h3>
+            <p className="text-sm text-gray-700 inter-medium cursor-default-custom">{feature.description}</p>
           </motion.div>
         ))}
       </div>

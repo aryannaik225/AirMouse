@@ -21,8 +21,8 @@ const HeroSection = () => {
   const downloadApp = (handedness) => {
     const url =
       handedness === 'right'
-        ? 'https://drive.google.com/uc?export=download&id=1lrXFxmGeBjFSf47QRMsjLD3ize-6bU7n'
-        : 'https://drive.google.com/uc?export=download&id=1MOXN3s7iXfQuU07v5uxuomDL4jrh6cbl'
+        ? 'https://www.dropbox.com/scl/fi/tgwfjwguykxmogoxsjx16/AirMouse-Right-Hand.zip?rlkey=hidx5xabudwqfv8tdm6rb0wys&st=e8r1ug1g&dl=0'
+        : 'https://www.dropbox.com/scl/fi/qmhs61ymgsg0307voo7rc/AirMouse-Left-Hand.zip?rlkey=dgux7j0xsrpxevoutu8ra1hge&st=pevned3k&dl=0'
 
     window.location.href = url
     setShowModal(false)
@@ -192,7 +192,8 @@ const HeroSection = () => {
             autoPlay
             muted
             playsInline
-            className='w-[50%] h-[50%] rounded-2xl shadow-lg z-10 opacity-90 border-8 border-white'
+            onContextMenu={(e) => e.preventDefault()}
+            className='w-[50%] h-[50%] rounded-2xl shadow-lg z-10 opacity-90 border-8 border-white select-none'
             onEnded={handleEnded}
           >
             <source src='/HeroSectionVideo.mp4' type='video/mp4' />

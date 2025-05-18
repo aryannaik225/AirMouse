@@ -11,7 +11,7 @@ import React from "react";
 
 export default function Home() {
   return (
-    <div className="cursor-airmouse overflow-x-hidden">
+    <div className="cursor-airmouse w-screen overflow-x-hidden">
       <HeroSection />
       <WhatAndWhy />
       <HowItWorks />

@@ -36,7 +36,7 @@ const DownloadAndRequirements = () => {
   ]
 
   return (
-    <section className="relative py-32 px-6 sm:px-16 overflow-hidden">
+    <section className="relative py-32 px-6 sm:px-16 overflow-hidden cursor-default-custom">
       {/* Patterned Grid Background + Glow */}
       <div
         className={cn(
@@ -61,8 +61,8 @@ const DownloadAndRequirements = () => {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto text-center"
         >
-          <h2 className="text-4xl md:text-5xl inter-bold mb-4">Download AirMouse</h2>
-          <p className="text-black/60 inter-medium text-lg">
+          <h2 className="text-4xl md:text-5xl inter-bold mb-4 cursor-select-custom">Download AirMouse</h2>
+          <p className="text-black/60 inter-medium text-lg cursor-select-custom">
             Choose the version that matches your dominant hand for optimal cursor alignment and comfort.
           </p>
         </motion.div>
@@ -78,8 +78,8 @@ const DownloadAndRequirements = () => {
           {/* Download Options */}
           <div className="bg-white/60 backdrop-blur-xl border border-black/10 rounded-2xl px-8 py-10 shadow-md w-full flex-col flex justify-between">
             <div>
-              <h3 className="text-2xl inter-bold text-black mb-4">Download Options</h3>
-              <p className="text-black/70 inter-medium text-base mb-6">
+              <h3 className="text-2xl inter-bold text-black mb-4 cursor-select-custom">Download Options</h3>
+              <p className="text-black/70 inter-medium text-base mb-6 cursor-select-custom">
                 Select the version based on your dominant hand:
               </p>
             </div>
@@ -128,9 +128,9 @@ const DownloadAndRequirements = () => {
 
                 {/* Button */}
                 <motion.a
-                  href="/downloads/AirMouse-right.exe"
+                  href="https://www.dropbox.com/scl/fi/tgwfjwguykxmogoxsjx16/AirMouse-Right-Hand.zip?rlkey=hidx5xabudwqfv8tdm6rb0wys&st=e8r1ug1g&dl=0"
                   whileHover={{ scale: 1.02 }}
-                  className="relative z-10 w-full px-5 py-4 rounded-xl bg-gradient-to-r from-[#5ddcff] to-[#3c67e3] text-white inter-medium shadow-md flex items-center justify-center gap-2 text-nowrap"
+                  className="relative z-10 w-full px-5 py-4 rounded-xl bg-gradient-to-r from-[#5ddcff] to-[#3c67e3] text-white inter-medium shadow-md flex items-center justify-center gap-2 text-nowrap cursor-pointer-custom"
                 >
                   <FaDownload />
                   Right-Handed Setup
@@ -179,9 +179,9 @@ const DownloadAndRequirements = () => {
 
                 {/* Button */}
                 <motion.a
-                  href="/downloads/AirMouse-right.exe"
+                  href="https://www.dropbox.com/scl/fi/qmhs61ymgsg0307voo7rc/AirMouse-Left-Hand.zip?rlkey=dgux7j0xsrpxevoutu8ra1hge&st=pevned3k&dl=0"
                   whileHover={{ scale: 1.02 }}
-                  className="relative z-10 w-full px-5 py-4 rounded-xl bg-gradient-to-r from-[#ff8a05] to-[#ff3c83] text-white inter-medium shadow-md flex items-center justify-center gap-2 text-nowrap"
+                  className="relative z-10 w-full px-5 py-4 rounded-xl bg-gradient-to-r from-[#ff8a05] to-[#ff3c83] text-white inter-medium shadow-md flex items-center justify-center gap-2 text-nowrap cursor-pointer-custom"
                 >
                   <FaDownload />
                   Left-Handed Setup
@@ -203,12 +203,12 @@ const DownloadAndRequirements = () => {
 
           {/* System Requirements */}
           <div className="bg-white/60 backdrop-blur-xl border border-black/10 rounded-2xl px-8 py-10 shadow-md w-full">
-            <h3 className="text-2xl inter-bold text-black mb-4">System Requirements</h3>
+            <h3 className="text-2xl inter-bold text-black mb-4 cursor-select-custom">System Requirements</h3>
             <ul className="space-y-4">
               {requirements.map((req, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <FaCheckCircle className="text-green-500 mt-1" />
-                  <span className="text-black inter-medium">{req}</span>
+                  <FaCheckCircle className="text-green-500 mt-1 cursor-pointer-custom" />
+                  <span className="text-black inter-medium cursor-select-custom">{req}</span>
                 </li>
               ))}
             </ul>

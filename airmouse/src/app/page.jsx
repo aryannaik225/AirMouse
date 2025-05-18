@@ -16,8 +16,6 @@ export default function Home() {
       <WhatAndWhy />
       <HowItWorks />
       <DownloadAndRequirements />
-      {/* <Downloads />
-      <SystemRequirements /> */}
       <FAQ />
       <ContactCTA />
       <Footer />

@@ -1,21 +1,62 @@
 'use client'
 
-import React from 'react'
+import { motion } from 'framer-motion'
 import { FaGithub } from 'react-icons/fa'
+import { SiLinkedin } from "react-icons/si";
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
 
-const Footer = () => (
-  <footer className="py-6 px-6 sm:px-16 bg-white border-t border-black/10">
-    <div className="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center text-black/70 inter-medium">
-      <span>© 2025 Aryan Naik</span>
-      <div className="flex items-center space-x-4 mt-4 sm:mt-0">
-        <a href="https://github.com/aryannaik225/AirMouse" target="_blank">
-          <FaGithub size={20} className="hover:text-black" />
+const Footer = () => {
+  return (
+    <footer className="relative mt-24 px-6 sm:px-16 py-5 bg-white border-t border-neutral-200 overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        viewport={{ once: true }}
+        className="relative z-10 max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-6"
+      >
+        {/* Logo and Text */}
+        <a href='#' className="flex items-center gap-3">
+          <Image src="/airmouse_title.png" alt="AirMouse Logo" width={160} height={40} />
         </a>
-        <a href="/LICENSE" className="hover:underline">License</a>
-        <a href="/privacy" className="hover:underline">Privacy Policy</a>
-      </div>
-    </div>
-  </footer>
-)
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
+          viewport={{ once: true }}
+          className="relative z-10 text-center text-neutral-500 text-sm"
+        >
+          © {new Date().getFullYear()} AirMouse. Built with passion ✨
+        </motion.div>
+
+        {/* GitHub & Linkedin */}
+        <div className="flex items-center gap-6">
+          <Link
+            href="https://github.com/aryannaik225/AirMouse"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-neutral-700 hover:text-black transition"
+          >
+            <FaGithub className="text-xl" />
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/aryannaik225/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-neutral-700 hover:text-black transition"
+          >
+            <SiLinkedin className="text-xl" />
+          </Link>
+        </div>
+      </motion.div>
+
+      {/* Bottom Text */}
+      
+    </footer>
+  )
+}
 
 export default Footer

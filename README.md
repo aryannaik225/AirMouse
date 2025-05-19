@@ -4,7 +4,7 @@
 No hardware, no controllers - just your **webcam** and **gestures**.
 
 <div align="center" width="100%">
-  <a href="https://github.com/aryannaik225/AirMouse" target="_blank">
+  <a href="https://airmouse.vercel.app" target="_blank">
     <img src="https://github.com/aryannaik225/React-Portfolio/blob/main/assets/view-button.svg" alt="Visit Site">  
   </a>
 </div>
@@ -36,7 +36,7 @@ No hardware, no controllers - just your **webcam** and **gestures**.
 ## 🔽 Download AirMouse
 
 <div align="center" width="100%">
-  <a href="https://github.com/aryannaik225/AirMouse" target="_blank">
+  <a href="https://airmouse.vercel.app" target="_blank">
     <img src="https://github.com/aryannaik225/React-Portfolio/blob/main/assets/view-button.svg" alt="Visit Site">  
   </a>
 </div>
@@ -90,7 +90,7 @@ Or, if you're using the `.exe` version - just double-click to launch
 ---
 
 ## 📘 User Manual
-[📄 Download the User Manual]()
+📄 User Manual is provided with the app download
 
 ---
 
